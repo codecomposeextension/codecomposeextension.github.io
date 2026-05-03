@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — CodeCompose</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d0d0d;
+      color: #e8e8e8;
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: #3ecf8e; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 60px;
+      background: rgba(13,13,13,0.9);
+      border-bottom: 1px solid #252525;
+    }
+
+    .nav-brand {
+      font-weight: 700; font-size: 15px; color: #fff;
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    .nav-back {
+      font-size: 14px; color: #666;
+      transition: color 0.15s;
+    }
+    .nav-back:hover { color: #e8e8e8; text-decoration: none; }
+
+    .page-wrap {
+      max-width: 720px; margin: 0 auto;
+      padding: 64px 40px 100px;
+    }
+
+    .page-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #3ecf8e; margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 36px; font-weight: 800; color: #fff;
+      letter-spacing: -0.02em; line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .updated {
+      font-size: 13px; color: #555; margin-bottom: 48px;
+    }
+
+    .toc {
+      background: #141414; border: 1px solid #252525;
+      border-radius: 10px; padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+
+    .toc-title {
+      font-size: 12px; font-weight: 600; color: #666;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 14px;
+    }
+
+    .toc ol {
+      padding-left: 18px;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+
+    .toc li a {
+      font-size: 14px; color: #888;
+      transition: color 0.15s;
+    }
+    .toc li a:hover { color: #3ecf8e; text-decoration: none; }
+
+    .prose { display: flex; flex-direction: column; gap: 40px; }
+
+    .prose-section {}
+
+    .prose-section h2 {
+      font-size: 20px; font-weight: 700; color: #fff;
+      margin-bottom: 14px; padding-top: 8px;
+    }
+
+    .prose-section p {
+      font-size: 15px; color: #aaa; line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .prose-section p:last-child { margin-bottom: 0; }
+
+    .prose-section ul {
+      padding-left: 0; list-style: none;
+      display: flex; flex-direction: column; gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .prose-section ul li {
+      font-size: 15px; color: #aaa; line-height: 1.65;
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+
+    .prose-section ul li::before {
+      content: '·'; color: #3ecf8e; font-weight: 700;
+      flex-shrink: 0; margin-top: 2px;
+    }
+
+    .callout {
+      background: #141414; border: 1px solid #252525;
+      border-left: 3px solid #3ecf8e;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px; margin: 16px 0;
+    }
+
+    .callout p {
+      font-size: 14px; color: #888; margin: 0 !important;
+      line-height: 1.65;
+    }
+
+    hr { border: none; border-top: 1px solid #1e1e1e; }
+
+    footer {
+      border-top: 1px solid #1e1e1e;
+      padding: 28px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+
+    .footer-brand { font-size: 14px; font-weight: 700; color: #fff; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: #555; transition: color 0.15s; }
+    .footer-links a:hover { color: #e8e8e8; text-decoration: none; }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .page-wrap { padding: 40px 20px 80px; }
+      footer { padding: 24px 20px; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">CodeCompose</div>
+  <a href="index.html" class="nav-back">← Back to home</a>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-label">Legal</div>
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: May 3, 2026</p>
+
+  <div class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#what-we-collect">Data we collect and store</a></li>
+      <li><a href="#what-we-dont">Data we do not collect</a></li>
+      <li><a href="#third-parties">Third-party services</a></li>
+      <li><a href="#revalidation">License revalidation</a></li>
+      <li><a href="#retention">Data retention</a></li>
+      <li><a href="#children">Children's privacy</a></li>
+      <li><a href="#changes">Changes to this policy</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </div>
+
+  <div class="prose">
+
+    <div class="prose-section" id="overview">
+      <h2>1. Overview</h2>
+      <p>
+        CodeCompose is a Chrome extension that formats and inserts syntax-highlighted
+        code blocks into Gmail. We are committed to protecting your privacy.
+        This policy explains exactly what data we collect, why, and how it is used.
+      </p>
+      <div class="callout">
+        <p>
+          <strong style="color:#e8e8e8;">Short version:</strong> CodeCompose never reads your emails,
+          never transmits your code to any server, and never tracks your usage.
+          The only external network call is a daily license key check with Lemon Squeezy
+          for paid subscribers.
+        </p>
+      </div>
+    </div>
+
+    <div class="prose-section" id="what-we-collect">
+      <h2>2. Data we collect and store</h2>
+      <p>
+        All data CodeCompose stores is saved locally in your browser using
+        <code style="background:#1e1e1e;padding:2px 6px;border-radius:4px;font-size:13px;">chrome.storage.sync</code>,
+        which is synced across your Chrome profiles by Google's own infrastructure.
+        We never see or access this data.
+      </p>
+      <p><strong style="color:#fff;">Preferences</strong></p>
+      <ul>
+        <li>Your selected theme (e.g. Dark, Dracula)</li>
+        <li>Default language setting</li>
+        <li>Font size preference</li>
+        <li>Whether the language label is shown</li>
+        <li>Whether line numbers are shown by default</li>
+      </ul>
+      <p><strong style="color:#fff;">License information (paid subscribers only)</strong></p>
+      <ul>
+        <li>Your license key — used to verify your subscription status</li>
+        <li>An instance ID — assigned by Lemon Squeezy when you activate a license</li>
+        <li>Your current tier (Free, Junior Dev, or Senior Dev)</li>
+      </ul>
+    </div>
+
+    <div class="prose-section" id="what-we-dont">
+      <h2>3. Data we do not collect</h2>
+      <ul>
+        <li>We do not read, store, or transmit the contents of your emails</li>
+        <li>We do not collect the code you insert into code blocks</li>
+        <li>We do not track usage, keystrokes, or behavior</li>
+        <li>We do not use analytics, crash reporting, or advertising SDKs</li>
+        <li>We do not collect your name or email address</li>
+        <li>We do not use cookies or browser fingerprinting</li>
+      </ul>
+    </div>
+
+    <div class="prose-section" id="third-parties">
+      <h2>4. Third-party services</h2>
+      <p><strong style="color:#fff;">Lemon Squeezy</strong></p>
+      <p>
+        When you activate, validate, or deactivate a license, CodeCompose sends
+        your license key and instance ID to the Lemon Squeezy API
+        (<code style="background:#1e1e1e;padding:2px 6px;border-radius:4px;font-size:13px;">api.lemonsqueezy.com</code>)
+        to verify your subscription status. No other data is included in these requests.
+      </p>
+      <p>
+        Lemon Squeezy's privacy policy is available at
+        <a href="https://www.lemonsqueezy.com/privacy" target="_blank">lemonsqueezy.com/privacy</a>.
+      </p>
+      <p>We do not share your data with any other third parties.</p>
+    </div>
+
+    <div class="prose-section" id="revalidation">
+      <h2>5. License revalidation</h2>
+      <p>
+        Once every 24 hours, CodeCompose checks with Lemon Squeezy that your license
+        key is still active. This check sends only your license key and instance ID —
+        nothing else. If your subscription has lapsed, your tier is reset to Free
+        locally in your browser. No other data is transmitted during this process.
+      </p>
+    </div>
+
+    <div class="prose-section" id="retention">
+      <h2>6. Data retention</h2>
+      <p>
+        License and preference data remain in your browser's sync storage until you
+        either deactivate your license through the CodeCompose settings page or
+        uninstall the extension. You can clear all stored data at any time by
+        clicking <strong style="color:#fff;">Deactivate</strong> in Settings, which
+        removes the license key and instance ID immediately.
+      </p>
+    </div>
+
+    <div class="prose-section" id="children">
+      <h2>7. Children's privacy</h2>
+      <p>
+        CodeCompose is not directed at children under the age of 13 and does not
+        knowingly collect personal data from them.
+      </p>
+    </div>
+
+    <div class="prose-section" id="changes">
+      <h2>8. Changes to this policy</h2>
+      <p>
+        We may update this privacy policy as the extension evolves. The
+        "Last updated" date at the top of this page will reflect any changes.
+        Continued use of the extension after changes constitutes acceptance
+        of the updated policy.
+      </p>
+    </div>
+
+    <div class="prose-section" id="contact">
+      <h2>9. Contact</h2>
+      <p>
+        If you have questions or concerns about this privacy policy or how
+        CodeCompose handles data, please contact us at:
+      </p>
+      <p>
+        <strong style="color:#fff;">Email:</strong>
+        <a href="mailto:privacy@codecompose.lemonsqueezy.com">privacy@codecompose.lemonsqueezy.com</a>
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">CodeCompose</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="https://chromewebstore.google.com/detail/codecompose" target="_blank">Chrome Web Store</a>
+  </div>
+</footer>
+
+</body>
+</html>
