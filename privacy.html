@@ -34,7 +34,10 @@
     .nav-brand {
       font-weight: 700; font-size: 15px; color: #fff;
       display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
     }
+    .nav-brand img { width: 26px; height: 26px; border-radius: 6px; }
+    .nav-brand:hover { opacity: 0.8; }
 
     .nav-back {
       font-size: 14px; color: #666;
@@ -154,7 +157,10 @@
 <body>
 
 <nav>
-  <div class="nav-brand">CodeCompose</div>
+  <a href="index.html" class="nav-brand">
+    <img src="icons/icon48.png" alt="CodeCompose" onerror="this.style.display='none'"/>
+    CodeCompose
+  </a>
   <a href="index.html" class="nav-back">← Back to home</a>
 </nav>
 

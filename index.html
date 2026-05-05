@@ -70,7 +70,9 @@
     .nav-brand {
       display: flex; align-items: center; gap: 10px;
       font-weight: 700; font-size: 15px; color: #fff;
+      text-decoration: none;
     }
+    .nav-brand:hover { opacity: 0.8; }
 
     .nav-brand img { width: 26px; height: 26px; border-radius: 6px; }
 
@@ -421,10 +423,10 @@
 
 <!-- ── Nav ── -->
 <nav>
-  <div class="nav-brand">
+  <a href="index.html" class="nav-brand">
     <img src="icons/icon48.png" alt="CodeCompose" onerror="this.style.display='none'"/>
     CodeCompose
-  </div>
+  </a>
   <div class="nav-links">
     <a href="#how-it-works">How it works</a>
     <a href="#pricing">Pricing</a>
