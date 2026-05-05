@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found — CodeCompose</title>
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/icon16.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="icons/icon48.png" />
+  <link rel="apple-touch-icon" href="icons/icon128.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d0d0d;
+      color: #e8e8e8;
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: #3ecf8e; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 60px;
+      background: rgba(13,13,13,0.9);
+      border-bottom: 1px solid #252525;
+    }
+
+    .nav-brand {
+      font-weight: 700; font-size: 15px; color: #fff;
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    .nav-brand img { width: 26px; height: 26px; border-radius: 6px; }
+
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { font-size: 14px; color: #666; transition: color 0.15s; }
+    .nav-links a:hover { color: #e8e8e8; text-decoration: none; }
+
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 40px;
+    }
+
+    .error-code {
+      font-size: 96px;
+      font-weight: 800;
+      color: #1e1e1e;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 24px;
+      user-select: none;
+    }
+
+    .page-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #3ecf8e;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 32px; font-weight: 800; color: #fff;
+      letter-spacing: -0.02em; line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    p {
+      font-size: 15px; color: #666;
+      max-width: 380px; line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 24px; border-radius: 8px;
+      font-size: 14px; font-weight: 600;
+      cursor: pointer; border: none;
+      transition: opacity 0.15s, transform 0.1s;
+      text-decoration: none;
+    }
+    .btn:hover { opacity: 0.88; transform: translateY(-1px); text-decoration: none; }
+    .btn-primary { background: #3ecf8e; color: #0a1a12; }
+
+    footer {
+      border-top: 1px solid #1e1e1e;
+      padding: 28px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+
+    .footer-brand { font-size: 14px; font-weight: 700; color: #fff; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: #555; transition: color 0.15s; }
+    .footer-links a:hover { color: #e8e8e8; text-decoration: none; }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .content { padding: 60px 20px; }
+      footer { padding: 24px 20px; }
+      .error-code { font-size: 64px; }
+      h1 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <img src="icons/icon48.png" alt="CodeCompose" onerror="this.style.display='none'"/>
+    CodeCompose
+  </div>
+  <div class="nav-links">
+    <a href="index.html#how-it-works">How it works</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="changelog.html">Changelog</a>
+    <a href="privacy.html">Privacy</a>
+  </div>
+</nav>
+
+<div class="content">
+  <div class="error-code">404</div>
+  <div class="page-label">Page not found</div>
+  <h1>Nothing to see here.</h1>
+  <p>The page you're looking for doesn't exist or may have been moved.</p>
+  <a href="index.html" class="btn btn-primary">← Back to home</a>
+</div>
+
+<footer>
+  <div class="footer-brand">CodeCompose</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="changelog.html">Changelog</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="https://chromewebstore.google.com/detail/codecompose/nfbekkdjjidjdkjjhidpplpgjabcaelb" target="_blank">Chrome Web Store</a>
+  </div>
+</footer>
+
+</body>
+</html>
