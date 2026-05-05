@@ -378,6 +378,29 @@
     .footer-links a { font-size: 13px; color: var(--muted); transition: color 0.15s; }
     .footer-links a:hover { color: var(--text); }
 
+    /* ── Languages grid ── */
+    .lang-tier-group { margin-bottom: 32px; }
+    .lang-tier-group:last-child { margin-bottom: 0; }
+
+    .lang-tier-label {
+      font-size: 11px; font-weight: 600; color: var(--subtle);
+      text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    .lang-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .lang-pill {
+      font-size: 12px; font-weight: 500;
+      padding: 5px 14px; border-radius: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.02em;
+    }
+
+    .lang-pill.free   { background: rgba(136,136,136,0.10); color: #888;          border: 1px solid rgba(136,136,136,0.18); }
+    .lang-pill.junior { background: var(--green-bg);         color: var(--green);  border: 1px solid rgba(62,207,142,0.22);  }
+    .lang-pill.senior { background: var(--purple-bg);        color: var(--purple); border: 1px solid rgba(167,139,250,0.22); }
+
     /* ── Divider ── */
     .divider-line {
       border: none; border-top: 1px solid var(--border);
@@ -446,15 +469,15 @@
       <table class="code-table">
         <tbody>
           <tr>
-            <td class="line-nums-col"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
+            <td class="line-nums-col">1
+2
+3
+4
+5
+6
+7
+8
+9
 10</td>
             <td class="code-col"><span class="kw">interface</span> <span class="fn">ApiResponse</span>&lt;T&gt; {
   data<span class="op">:</span> T<span class="op">;</span>
@@ -551,6 +574,54 @@
           <li style="color:#a78bfa;font-size:13px;padding-top:4px;">✦ GitHub Gist embed (coming)</li>
           <li style="color:#a78bfa;font-size:13px;">✦ Custom theme builder (coming)</li>
         </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider-line" />
+
+<!-- ── Languages ── -->
+<section id="languages">
+  <div class="section-inner">
+    <div class="section-label">Languages</div>
+    <h2>19 languages supported.</h2>
+    <p class="section-sub">From Python to Rust — every tier unlocks more.</p>
+
+    <div class="lang-tier-group">
+      <div class="lang-tier-label">Free</div>
+      <div class="lang-pills">
+        <span class="lang-pill free">JavaScript</span>
+        <span class="lang-pill free">JSON</span>
+        <span class="lang-pill free">Python</span>
+        <span class="lang-pill free">Plain Text</span>
+      </div>
+    </div>
+
+    <div class="lang-tier-group">
+      <div class="lang-tier-label">Junior Dev — adds 9 more</div>
+      <div class="lang-pills">
+        <span class="lang-pill junior">TypeScript</span>
+        <span class="lang-pill junior">Java</span>
+        <span class="lang-pill junior">PHP</span>
+        <span class="lang-pill junior">Ruby</span>
+        <span class="lang-pill junior">SQL</span>
+        <span class="lang-pill junior">HTML</span>
+        <span class="lang-pill junior">CSS</span>
+        <span class="lang-pill junior">Shell / Bash</span>
+        <span class="lang-pill junior">YAML</span>
+      </div>
+    </div>
+
+    <div class="lang-tier-group">
+      <div class="lang-tier-label">Senior Dev — adds 6 more</div>
+      <div class="lang-pills">
+        <span class="lang-pill senior">Go</span>
+        <span class="lang-pill senior">Rust</span>
+        <span class="lang-pill senior">Kotlin</span>
+        <span class="lang-pill senior">Swift</span>
+        <span class="lang-pill senior">C++</span>
+        <span class="lang-pill senior">XML</span>
       </div>
     </div>
   </div>
@@ -679,6 +750,20 @@
           <span class="faq-arrow">⌄</span>
         </div>
         <div class="faq-a">Your account automatically reverts to the Free tier. You keep the extension and all free features. Nothing is deleted.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          Does it work with Google Workspace?
+          <span class="faq-arrow">⌄</span>
+        </div>
+        <div class="faq-a">Yes. CodeCompose works with both personal Gmail accounts and Google Workspace (formerly G Suite) accounts. As long as you're composing email in Gmail's web interface, the extension works the same way.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          Does my recipient need CodeCompose to view the code block?
+          <span class="faq-arrow">⌄</span>
+        </div>
+        <div class="faq-a">No. Code blocks are inserted as standard HTML with fully inline styles — no external stylesheets, no plugins required. Your recipient sees the syntax-highlighted code directly in their email client, whether they use Gmail, Outlook, Apple Mail, or anything else.</div>
       </div>
     </div>
   </div>
