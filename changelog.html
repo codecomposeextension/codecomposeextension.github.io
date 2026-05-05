@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Changelog — CodeCompose</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d0d0d;
+      color: #e8e8e8;
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: #3ecf8e; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 60px;
+      background: rgba(13,13,13,0.9);
+      border-bottom: 1px solid #252525;
+    }
+
+    .nav-brand {
+      font-weight: 700; font-size: 15px; color: #fff;
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    .nav-back {
+      font-size: 14px; color: #666;
+      transition: color 0.15s;
+    }
+    .nav-back:hover { color: #e8e8e8; text-decoration: none; }
+
+    .page-wrap {
+      max-width: 720px; margin: 0 auto;
+      padding: 64px 40px 100px;
+    }
+
+    .page-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #3ecf8e; margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 36px; font-weight: 800; color: #fff;
+      letter-spacing: -0.02em; line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 14px; color: #555; margin-bottom: 56px;
+    }
+
+    /* ── Version block ── */
+    .version-block {
+      margin-bottom: 52px;
+      padding-bottom: 52px;
+      border-bottom: 1px solid #1e1e1e;
+    }
+    .version-block:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .version-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 20px; flex-wrap: wrap;
+    }
+
+    .version-tag {
+      font-size: 18px; font-weight: 800; color: #fff;
+      letter-spacing: -0.02em;
+    }
+
+    .version-date {
+      font-size: 13px; color: #444;
+    }
+
+    .version-badge {
+      font-size: 11px; font-weight: 700;
+      padding: 3px 9px; border-radius: 20px;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-major {
+      background: rgba(62,207,142,0.12);
+      color: #3ecf8e;
+    }
+
+    .badge-fix {
+      background: rgba(248,113,113,0.08);
+      color: #f87171;
+    }
+
+    /* ── Change items ── */
+    .change-group {
+      margin-bottom: 20px;
+    }
+
+    .change-group:last-child { margin-bottom: 0; }
+
+    .change-group-title {
+      font-size: 11px; font-weight: 600; color: #555;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+
+    .change-list {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+
+    .change-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; color: #aaa; line-height: 1.6;
+    }
+
+    .change-tag {
+      font-size: 10px; font-weight: 700;
+      padding: 2px 7px; border-radius: 4px;
+      white-space: nowrap; flex-shrink: 0;
+      margin-top: 2px; letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .tag-new     { background: rgba(62,207,142,0.12);  color: #3ecf8e; }
+    .tag-fix     { background: rgba(248,113,113,0.10); color: #f87171; }
+    .tag-improved{ background: rgba(96,165,250,0.10);  color: #60a5fa; }
+
+    .tier-pill {
+      display: inline-block;
+      font-size: 10px; font-weight: 600;
+      padding: 1px 7px; border-radius: 10px;
+      margin-left: 6px; vertical-align: middle;
+      letter-spacing: 0.04em;
+    }
+
+    .pill-senior { background: rgba(167,139,250,0.12); color: #a78bfa; }
+    .pill-junior { background: rgba(62,207,142,0.10);  color: #3ecf8e; }
+    .pill-free   { background: rgba(136,136,136,0.12); color: #888;    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid #1e1e1e;
+      padding: 28px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+
+    .footer-brand { font-size: 14px; font-weight: 700; color: #fff; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: #555; transition: color 0.15s; }
+    .footer-links a:hover { color: #e8e8e8; text-decoration: none; }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .page-wrap { padding: 40px 20px 80px; }
+      footer { padding: 24px 20px; }
+      h1 { font-size: 28px; }
+      .version-header { gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">CodeCompose</div>
+  <a href="index.html" class="nav-back">← Back to home</a>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-label">Product</div>
+  <h1>Changelog</h1>
+  <p class="subtitle">A full history of releases, new features, and fixes.</p>
+
+  <!-- ── v2.0.0 ── -->
+  <div class="version-block">
+    <div class="version-header">
+      <span class="version-tag">v2.0.0</span>
+      <span class="version-date">May 2026</span>
+      <span class="version-badge badge-major">Major Release</span>
+    </div>
+
+    <div class="change-group">
+      <div class="change-group-title">New — Senior Dev</div>
+      <div class="change-list">
+        <div class="change-item">
+          <span class="change-tag tag-new">New</span>
+          <span>Line numbers — toggle on/off per insertion, cleanly right-aligned in a fixed-width column <span class="tier-pill pill-senior">Senior Dev</span></span>
+        </div>
+        <div class="change-item">
+          <span class="change-tag tag-new">New</span>
+          <span>Copy to clipboard — copy formatted code directly from the insert dialog <span class="tier-pill pill-senior">Senior Dev</span></span>
+        </div>
+        <div class="change-item">
+          <span class="change-tag tag-new">New</span>
+          <span>6 additional languages: Go, Rust, Kotlin, Swift, C++, XML <span class="tier-pill pill-senior">Senior Dev</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="change-group">
+      <div class="change-group-title">New — Junior Dev</div>
+      <div class="change-list">
+        <div class="change-item">
+          <span class="change-tag tag-new">New</span>
+          <span>Prettier formatting — production-quality code formatting for JS, TS, HTML, CSS, JSON <span class="tier-pill pill-junior">Junior Dev</span></span>
+        </div>
+        <div class="change-item">
+          <span class="change-tag tag-new">New</span>
+          <span>Auto language detection — intelligently detects the language from your code <span class="tier-pill pill-junior">Junior Dev</span></span>
+        </div>
+        <div class="change-item">
+          <span class="change-tag tag-new">New</span>
+          <span>9 additional languages: TypeScript, SQL, HTML, CSS, Java, PHP, Ruby, Shell/Bash, YAML <span class="tier-pill pill-junior">Junior Dev</span></span>
+        </div>
+        <div class="change-item">
+          <span class="change-tag tag-new">New</span>
+          <span>3 new themes: Dracula, GitHub, Monokai <span class="tier-pill pill-junior">Junior Dev</span></span>
+        </div>
+        <div class="change-item">
+          <span class="change-tag tag-new">New</span>
+          <span>Font size control and language label toggle <span class="tier-pill pill-junior">Junior Dev</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="change-group">
+      <div class="change-group-title">Fixes</div>
+      <div class="change-list">
+        <div class="change-item">
+          <span class="change-tag tag-fix">Fix</span>
+          <span>PHP code containing SQL strings no longer misdetected as SQL</span>
+        </div>
+        <div class="change-item">
+          <span class="change-tag tag-fix">Fix</span>
+          <span>Gmail autocorrect no longer mangles operators — <code style="background:#1e1e1e;padding:1px 5px;border-radius:3px;font-size:12px;">-&gt;</code>, <code style="background:#1e1e1e;padding:1px 5px;border-radius:3px;font-size:12px;">&gt;=</code>, <code style="background:#1e1e1e;padding:1px 5px;border-radius:3px;font-size:12px;">$var</code>, <code style="background:#1e1e1e;padding:1px 5px;border-radius:3px;font-size:12px;">&lt;?php</code></span>
+        </div>
+        <div class="change-item">
+          <span class="change-tag tag-fix">Fix</span>
+          <span>Line numbers now render cleanly with no leading spaces</span>
+        </div>
+        <div class="change-item">
+          <span class="change-tag tag-fix">Fix</span>
+          <span>Prettier formatting now correctly activates for paid tiers</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── v1.0.0 ── -->
+  <div class="version-block">
+    <div class="version-header">
+      <span class="version-tag">v1.0.0</span>
+      <span class="version-date">2025</span>
+      <span class="version-badge badge-major">Initial Release</span>
+    </div>
+
+    <div class="change-group">
+      <div class="change-list">
+        <div class="change-item">
+          <span class="change-tag tag-new">New</span>
+          <span>Syntax highlighting for JavaScript, JSON, and Python <span class="tier-pill pill-free">Free</span></span>
+        </div>
+        <div class="change-item">
+          <span class="change-tag tag-new">New</span>
+          <span>js-beautify code formatting <span class="tier-pill pill-free">Free</span></span>
+        </div>
+        <div class="change-item">
+          <span class="change-tag tag-new">New</span>
+          <span>Dark and Light themes <span class="tier-pill pill-free">Free</span></span>
+        </div>
+        <div class="change-item">
+          <span class="change-tag tag-new">New</span>
+          <span>Insert code blocks via right-click menu in Gmail <span class="tier-pill pill-free">Free</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-brand">CodeCompose</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="https://chromewebstore.google.com/detail/codecompose/nfbekkdjjidjdkjjhidpplpgjabcaelb" target="_blank">Chrome Web Store</a>
+  </div>
+</footer>
+
+</body>
+</html>
