@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Guides, tips, and tutorials for sending code in Gmail and getting more out of CodeCompose." />
+  <title>Blog — CodeCompose</title>
+
+  <link rel="canonical" href="https://codecomposeextension.github.io/blog.html" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/icon16.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="icons/icon48.png" />
+  <link rel="apple-touch-icon" href="icons/icon128.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0d0d0d;
+      --surface2: #1a1a1a;
+      --border:   #252525;
+      --border2:  #2e2e2e;
+      --text:     #e8e8e8;
+      --muted:    #666;
+      --green:    #3ecf8e;
+      --green-bg: rgba(62,207,142,0.1);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: none; }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 60px;
+      background: rgba(13,13,13,0.92);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 15px; color: #fff;
+    }
+    .nav-brand:hover { opacity: 0.8; }
+    .nav-brand img { width: 26px; height: 26px; border-radius: 6px; }
+
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { font-size: 14px; color: var(--muted); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 20px; border-radius: 8px;
+      font-size: 14px; font-weight: 600;
+      cursor: pointer; border: none;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+    .btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-primary { background: var(--green); color: #0a1a12; }
+
+    .page-wrap {
+      max-width: 760px; margin: 0 auto;
+      padding: 64px 40px 100px;
+    }
+
+    .page-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--green); margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 36px; font-weight: 800; color: #fff;
+      letter-spacing: -0.02em; line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .subtitle { font-size: 15px; color: var(--muted); margin-bottom: 52px; }
+
+    /* ── Article cards ── */
+    .article-list { display: flex; flex-direction: column; gap: 2px; }
+
+    .article-card {
+      display: block;
+      background: var(--surface2);
+      border: 1px solid var(--border2);
+      border-radius: 12px;
+      padding: 28px 32px;
+      transition: border-color 0.2s, background 0.2s;
+      margin-bottom: 16px;
+      text-decoration: none;
+    }
+
+    .article-card:hover {
+      border-color: rgba(62,207,142,0.3);
+      background: #1e1e1e;
+    }
+
+    .article-tag {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--green);
+      margin-bottom: 10px;
+    }
+
+    .article-card h2 {
+      font-size: 20px; font-weight: 700; color: #fff;
+      margin-bottom: 10px; line-height: 1.3;
+    }
+
+    .article-card p {
+      font-size: 14px; color: var(--muted); line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .article-meta {
+      font-size: 12px; color: #444;
+      display: flex; align-items: center; gap: 12px;
+    }
+
+    .read-more {
+      font-size: 13px; font-weight: 600;
+      color: var(--green);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+
+    .footer-brand { font-weight: 700; font-size: 14px; color: #fff; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: var(--muted); transition: color 0.15s; }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .page-wrap { padding: 40px 20px 80px; }
+      footer { padding: 24px 20px; flex-direction: column; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="icons/icon48.png" alt="CodeCompose" onerror="this.style.display='none'"/>
+    CodeCompose
+  </a>
+  <div class="nav-links">
+    <a href="index.html#pricing">Pricing</a>
+    <a href="changelog.html">Changelog</a>
+    <a href="https://chromewebstore.google.com/detail/codecompose/nfbekkdjjidjdkjjhidpplpgjabcaelb" target="_blank" class="btn btn-primary">Install Free →</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-label">Blog</div>
+  <h1>Guides & Tips</h1>
+  <p class="subtitle">Tutorials, how-tos, and everything you need to send better code in Gmail.</p>
+
+  <div class="article-list">
+
+    <a href="how-to-send-code-in-gmail.html" class="article-card">
+      <div class="article-tag">Guide</div>
+      <h2>How to Send Code in Gmail With Syntax Highlighting</h2>
+      <p>Gmail has no native code block feature. Here's a full breakdown of every option — and the easiest way to send properly formatted, syntax-highlighted code directly in Gmail.</p>
+      <div class="article-meta">
+        <span>May 2026</span>
+        <span>·</span>
+        <span>5 min read</span>
+        <span>·</span>
+        <span class="read-more">Read →</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">CodeCompose</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="changelog.html">Changelog</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="https://chromewebstore.google.com/detail/codecompose/nfbekkdjjidjdkjjhidpplpgjabcaelb" target="_blank">Chrome Web Store</a>
+  </div>
+</footer>
+
+</body>
+</html>

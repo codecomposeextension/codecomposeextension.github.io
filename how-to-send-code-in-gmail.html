@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gmail doesn't support native code blocks. Here's how to send syntax-highlighted, formatted code in Gmail emails — the right way." />
+  <title>How to Send Code in Gmail With Syntax Highlighting — CodeCompose</title>
+
+  <link rel="canonical" href="https://codecomposeextension.github.io/how-to-send-code-in-gmail.html" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/icon16.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="icons/icon48.png" />
+  <link rel="apple-touch-icon" href="icons/icon128.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://codecomposeextension.github.io/how-to-send-code-in-gmail.html" />
+  <meta property="og:title" content="How to Send Code in Gmail With Syntax Highlighting" />
+  <meta property="og:description" content="Gmail doesn't support native code blocks. Here's how to send syntax-highlighted, formatted code in Gmail emails — the right way." />
+  <meta property="og:image" content="https://codecomposeextension.github.io/icons/icon128.png" />
+
+  <!-- Article schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Send Code in Gmail With Syntax Highlighting",
+    "description": "Gmail doesn't support native code blocks. Here's how to send syntax-highlighted, formatted code in Gmail emails — the right way.",
+    "author": { "@type": "Organization", "name": "CodeCompose" },
+    "publisher": { "@type": "Organization", "name": "CodeCompose", "url": "https://codecomposeextension.github.io/" },
+    "url": "https://codecomposeextension.github.io/how-to-send-code-in-gmail.html",
+    "datePublished": "2026-05-01",
+    "dateModified": "2026-05-16"
+  }
+  </script>
+
+  <!-- FAQ schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can you send code in Gmail?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, but Gmail has no native code block feature. You can paste plain text, use a third-party Chrome extension like CodeCompose to insert syntax-highlighted code blocks, or use a GitHub Gist link."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Gmail support code blocks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Gmail does not have a native code block or syntax highlighting feature as of 2026. Tools like Microsoft Teams and Slack support code blocks natively, but Gmail does not. Chrome extensions like CodeCompose fill this gap."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I format code in a Gmail email?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The easiest way is to use a Chrome extension like CodeCompose. Install it from the Chrome Web Store, then right-click selected code in Gmail and choose Insert Code Block. The code will be formatted and syntax-highlighted inline in your email."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the recipient need to install anything to see the code block?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Code blocks inserted by CodeCompose use inline HTML and CSS styles, so they render correctly in Gmail, Outlook, Apple Mail, and most other email clients without any special software."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0d0d0d;
+      --surface:  #141414;
+      --surface2: #1a1a1a;
+      --border:   #252525;
+      --border2:  #2e2e2e;
+      --text:     #e8e8e8;
+      --muted:    #666;
+      --subtle:   #444;
+      --green:    #3ecf8e;
+      --green-bg: rgba(62,207,142,0.1);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--green); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 60px;
+      background: rgba(13,13,13,0.92);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 15px; color: #fff;
+      text-decoration: none;
+    }
+    .nav-brand:hover { opacity: 0.8; }
+    .nav-brand img { width: 26px; height: 26px; border-radius: 6px; }
+
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 20px; border-radius: 8px;
+      font-size: 14px; font-weight: 600;
+      cursor: pointer; border: none;
+      transition: opacity 0.15s, transform 0.1s;
+      text-decoration: none;
+    }
+    .btn:hover { opacity: 0.88; transform: translateY(-1px); text-decoration: none; }
+    .btn-primary { background: var(--green); color: #0a1a12; }
+
+    /* ── Article layout ── */
+    .article-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 64px 40px 100px;
+    }
+
+    .article-meta {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 28px; flex-wrap: wrap;
+    }
+
+    .article-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--green);
+    }
+
+    .article-date { font-size: 13px; color: var(--muted); }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800; color: #fff;
+      letter-spacing: -0.02em; line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .article-intro {
+      font-size: 18px; color: var(--muted);
+      line-height: 1.7; margin-bottom: 48px;
+      border-left: 3px solid var(--green);
+      padding-left: 20px;
+    }
+
+    h2 {
+      font-size: 22px; font-weight: 700; color: #fff;
+      letter-spacing: -0.01em; margin-top: 52px; margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 17px; font-weight: 600; color: #ddd;
+      margin-top: 28px; margin-bottom: 10px;
+    }
+
+    p { color: #aaa; margin-bottom: 18px; line-height: 1.75; }
+
+    ul, ol {
+      margin: 0 0 20px 20px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+
+    li { color: #aaa; line-height: 1.65; }
+
+    strong { color: #e8e8e8; }
+
+    /* ── Callout box ── */
+    .callout {
+      background: var(--surface2);
+      border: 1px solid var(--border2);
+      border-left: 3px solid var(--green);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 28px 0;
+    }
+
+    .callout p { margin: 0; color: #bbb; font-size: 15px; }
+    .callout strong { color: var(--green); }
+
+    /* ── Inline code ── */
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      background: #1e1e1e;
+      border: 1px solid var(--border2);
+      padding: 2px 7px;
+      border-radius: 4px;
+      color: #e8e8e8;
+    }
+
+    /* ── Code preview block ── */
+    .code-preview {
+      border-radius: 10px; overflow: hidden;
+      border: 1px solid var(--border2);
+      margin: 28px 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+    }
+
+    .code-preview-bar {
+      background: #1e1e1e;
+      padding: 8px 14px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      font-size: 11px; color: var(--muted);
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+
+    .code-preview-body {
+      background: #1a1a2e;
+      padding: 18px 20px;
+      line-height: 1.7;
+      overflow-x: auto;
+      color: #cdd6f4;
+      white-space: pre;
+    }
+
+    .kw  { color: #cba6f7; }
+    .fn  { color: #89b4fa; }
+    .str { color: #a6e3a1; }
+    .num { color: #fab387; }
+    .cmt { color: #6c7086; font-style: italic; }
+    .op  { color: #89dceb; }
+
+    /* ── Comparison table ── */
+    .comparison {
+      width: 100%; border-collapse: collapse;
+      margin: 28px 0; font-size: 14px;
+    }
+
+    .comparison th {
+      text-align: left; padding: 10px 16px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .comparison td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      color: #aaa; vertical-align: top;
+    }
+
+    .comparison tr:last-child td { border-bottom: none; }
+    .comparison tr:nth-child(even) td { background: var(--surface2); }
+
+    .yes { color: var(--green); font-weight: 600; }
+    .no  { color: #f87171; }
+    .partial { color: #facc15; }
+
+    /* ── Steps ── */
+    .steps { display: flex; flex-direction: column; gap: 16px; margin: 28px 0; }
+
+    .step-row {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 18px 20px;
+    }
+
+    .step-num {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--green-bg); border: 1px solid rgba(62,207,142,0.25);
+      color: var(--green); font-weight: 700; font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-content h3 { margin: 0 0 4px; font-size: 15px; color: #fff; }
+    .step-content p  { margin: 0; font-size: 14px; color: var(--muted); }
+
+    /* ── CTA box ── */
+    .cta-box {
+      background: var(--green-bg);
+      border: 1px solid rgba(62,207,142,0.25);
+      border-radius: 12px;
+      padding: 32px 28px;
+      text-align: center;
+      margin-top: 52px;
+    }
+
+    .cta-box h2 { font-size: 22px; margin-top: 0; margin-bottom: 10px; }
+    .cta-box p  { color: var(--muted); margin-bottom: 20px; font-size: 15px; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+
+    .footer-brand { font-weight: 700; font-size: 14px; color: #fff; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--text); }
+
+    /* ── Divider ── */
+    .divider { height: 1px; background: var(--border); margin: 40px 0; }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 14px; }
+      .article-wrap { padding: 40px 20px 80px; }
+      footer { padding: 24px 20px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Nav ── -->
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="icons/icon48.png" alt="CodeCompose" onerror="this.style.display='none'"/>
+    CodeCompose
+  </a>
+  <div class="nav-links">
+    <a href="index.html#pricing">Pricing</a>
+    <a href="blog.html">Blog</a>
+    <a href="https://chromewebstore.google.com/detail/codecompose/nfbekkdjjidjdkjjhidpplpgjabcaelb" target="_blank" class="btn btn-primary">Install Free →</a>
+  </div>
+</nav>
+
+<!-- ── Article ── -->
+<div class="article-wrap">
+
+  <div class="article-meta">
+    <span class="article-label">Guide</span>
+    <span class="article-date">May 2026</span>
+  </div>
+
+  <h1>How to Send Code in Gmail With Syntax Highlighting</h1>
+
+  <p class="article-intro">
+    Gmail has no native code block feature. If you've ever pasted SQL, JavaScript, or Python into an email and watched it turn into an unreadable wall of text — you know the problem. Here's how to fix it.
+  </p>
+
+  <h2>Why Gmail Doesn't Format Code</h2>
+
+  <p>
+    Gmail is built for rich text — bold, italics, bullet points. It was never designed with developers in mind. When you paste code into Gmail, it strips all formatting and treats it like plain text. There are no <code>code</code> tags, no monospaced font option, no syntax highlighting.
+  </p>
+
+  <p>
+    Compare this to tools built for developers: <strong>Microsoft Teams</strong> has native code blocks. <strong>Slack</strong> has backtick syntax. <strong>GitHub</strong> has Markdown code fences. Gmail has nothing.
+  </p>
+
+  <p>
+    For developers, data analysts, and anyone who regularly shares SQL queries, API responses, configuration files, or code snippets over email — this is a daily frustration.
+  </p>
+
+  <h2>Your Options for Sending Code in Gmail</h2>
+
+  <p>There are a few ways to handle this, each with tradeoffs:</p>
+
+  <table class="comparison">
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>Formatted</th>
+        <th>Syntax Highlighting</th>
+        <th>Works inline</th>
+        <th>Effort</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Paste as plain text</strong></td>
+        <td class="no">No</td>
+        <td class="no">No</td>
+        <td class="yes">Yes</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td><strong>GitHub Gist link</strong></td>
+        <td class="yes">Yes</td>
+        <td class="yes">Yes</td>
+        <td class="no">No — requires click</td>
+        <td>High</td>
+      </tr>
+      <tr>
+        <td><strong>Screenshot of code</strong></td>
+        <td class="partial">Partial</td>
+        <td class="partial">Partial</td>
+        <td class="yes">Yes</td>
+        <td>Medium</td>
+      </tr>
+      <tr>
+        <td><strong>Chrome extension (CodeCompose)</strong></td>
+        <td class="yes">Yes</td>
+        <td class="yes">Yes</td>
+        <td class="yes">Yes</td>
+        <td>Minimal</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Option 1: Paste as Plain Text</h2>
+
+  <p>
+    The default approach. You paste your code, it loses all formatting. Your recipient sees a wall of monospace text with no color, no indentation awareness, and no structure. For short snippets this is sometimes fine. For anything longer than a few lines — or anything you want to look professional — it falls short.
+  </p>
+
+  <h2>Option 2: Link to a GitHub Gist</h2>
+
+  <p>
+    Create a Gist at <a href="https://gist.github.com" target="_blank">gist.github.com</a>, paste your code, copy the link, and send it in the email. The recipient clicks the link and sees properly formatted code.
+  </p>
+
+  <p>
+    The problem: it takes several steps, requires a GitHub account, and forces the recipient to leave their email client. For quick, internal back-and-forth it's overkill.
+  </p>
+
+  <h2>Option 3: Use a Chrome Extension (Recommended)</h2>
+
+  <p>
+    <strong>CodeCompose</strong> is a Chrome extension built specifically to solve this problem. It adds a code block option directly to Gmail's right-click menu. No external sites, no extra accounts, no steps for your recipient.
+  </p>
+
+  <div class="code-preview">
+    <div class="code-preview-bar">
+      <span>SQL — example code block in Gmail</span>
+      <span style="color:#3ecf8e;">CodeCompose</span>
+    </div>
+    <div class="code-preview-body"><span class="kw">SELECT</span>
+  u<span class="op">.</span>id<span class="op">,</span>
+  u<span class="op">.</span>email<span class="op">,</span>
+  <span class="fn">COUNT</span>(o<span class="op">.</span>id) <span class="kw">AS</span> order_count<span class="op">,</span>
+  <span class="fn">SUM</span>(o<span class="op">.</span>total) <span class="kw">AS</span> lifetime_value
+<span class="kw">FROM</span> users u
+<span class="kw">LEFT JOIN</span> orders o <span class="kw">ON</span> o<span class="op">.</span>user_id <span class="op">=</span> u<span class="op">.</span>id
+<span class="kw">WHERE</span> u<span class="op">.</span>created_at <span class="op">&gt;=</span> <span class="str">'2025-01-01'</span>
+<span class="kw">GROUP BY</span> u<span class="op">.</span>id<span class="op">,</span> u<span class="op">.</span>email
+<span class="kw">ORDER BY</span> lifetime_value <span class="kw">DESC</span><span class="op">;</span></div>
+  </div>
+
+  <p>
+    The code block above is what your recipient sees — inline in Gmail, no plugins required on their end. It uses fully inline HTML and CSS, so it renders in Gmail, Outlook, Apple Mail, and most other email clients.
+  </p>
+
+  <h2>How to Send a Code Block in Gmail Using CodeCompose</h2>
+
+  <div class="steps">
+    <div class="step-row">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Install CodeCompose</h3>
+        <p>Add it from the <a href="https://chromewebstore.google.com/detail/codecompose/nfbekkdjjidjdkjjhidpplpgjabcaelb" target="_blank">Chrome Web Store</a>. It's free to install and takes about 10 seconds. No account required.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Open Gmail and start composing</h3>
+        <p>Open a new compose window in Gmail as you normally would. Type or paste your code directly into the email body.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Select your code and right-click</h3>
+        <p>Highlight the code you want to format. Right-click the selection and choose <strong>Insert Code Block</strong> from the context menu.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Choose your settings and insert</h3>
+        <p>A dialog appears showing a preview of your code. Confirm the language (CodeCompose auto-detects it), choose a theme, toggle line numbers, then click Insert.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h3>Send your email</h3>
+        <p>The formatted code block is now inline in your compose window. Send the email normally. Your recipient sees the syntax-highlighted block directly in their inbox — no plugins, no clicks required on their end.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>What Languages Are Supported?</h2>
+
+  <p>CodeCompose supports 19 languages across its tiers:</p>
+
+  <ul>
+    <li><strong>Free:</strong> JavaScript, JSON, Python, Plain Text</li>
+    <li><strong>Junior Dev ($0.99/mo):</strong> Adds TypeScript, SQL, HTML, CSS, Java, PHP, Ruby, Shell/Bash, YAML — plus auto language detection and Prettier formatting</li>
+    <li><strong>Senior Dev ($1.99/mo):</strong> Adds Go, Rust, Kotlin, Swift, C++, XML — plus line numbers and copy to clipboard</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>Free plan:</strong> JavaScript, JSON, and Python are available at no cost — no subscription, no trial required. Just install and use.</p>
+  </div>
+
+  <h2>Does the Recipient Need to Install Anything?</h2>
+
+  <p>
+    No. This is one of the most important things to understand about how CodeCompose works.
+  </p>
+  <p>
+    Code blocks are inserted as standard HTML with fully <strong>inline CSS styles</strong>. There are no external stylesheets, no web fonts loaded from external servers, and no JavaScript. The styled block is baked directly into the email body. Whether your recipient uses Gmail, Outlook, Apple Mail, or Thunderbird — they see the same syntax-highlighted code you intended to send.
+  </p>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <h3>Does Gmail support code blocks natively?</h3>
+  <p>No. As of 2026, Gmail has no native code block or syntax highlighting feature. Chrome extensions like CodeCompose fill this gap.</p>
+
+  <h3>Is there a way to format code in Gmail without an extension?</h3>
+  <p>The closest built-in option is Gmail's monospace font (Format → More formatting → ꜰᴏɴᴛ → Courier New or Courier), but it provides no syntax highlighting and minimal formatting. For real code formatting, a Chrome extension is the only practical solution.</p>
+
+  <h3>Will the code block look right in Outlook?</h3>
+  <p>Yes. CodeCompose uses inline HTML and CSS — the same technique used by all major email marketing platforms to ensure cross-client compatibility. The block renders correctly in Gmail, Outlook (including desktop), Apple Mail, and most other clients.</p>
+
+  <h3>Is CodeCompose safe to use?</h3>
+  <p>Yes. CodeCompose only activates when you right-click selected text in the Gmail compose window. It never reads your emails, never stores any content, and only makes one external network request — a daily license check with Lemon Squeezy for paid subscribers.</p>
+
+  <!-- ── CTA ── -->
+  <div class="cta-box">
+    <h2>Stop sending unreadable code in Gmail</h2>
+    <p>Install CodeCompose free — takes 10 seconds. No account required.</p>
+    <a href="https://chromewebstore.google.com/detail/codecompose/nfbekkdjjidjdkjjhidpplpgjabcaelb" target="_blank" class="btn btn-primary" style="font-size:15px;padding:12px 26px;">
+      Install Free on Chrome →
+    </a>
+    <div style="margin-top:12px;font-size:12px;color:var(--muted);">Free forever plan · No account required · 19 languages</div>
+  </div>
+
+</div>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="footer-brand">CodeCompose</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="https://chromewebstore.google.com/detail/codecompose/nfbekkdjjidjdkjjhidpplpgjabcaelb" target="_blank">Chrome Web Store</a>
+  </div>
+</footer>
+
+</body>
+</html>
